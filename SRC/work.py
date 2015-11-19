@@ -3,6 +3,7 @@ import urllib.parse
 import json
 import codecs
 from datetime import date
+import os
 
 def main():
     #获取json文件
@@ -21,7 +22,7 @@ def main():
         #urllib.request.urlretrieve(url,'E:/Workspace/20151117BingWallpaperWorkspace/BingWallpaper/SRC')
         with urllib.request.urlopen(url) as dataValue:
             jpg = dataValue.read()
-            DstDir = "D:\\WorkSpace\\20151111GitWorkspace\\BingWallpaper\\SRC\\"
+            DstDir = os.getcwd() + '\\'
             FileName1 = 'BingWallpaper'
             FileName2 = date.today().isoformat()
             FileNameEnd = '.jpg'
