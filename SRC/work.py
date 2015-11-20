@@ -6,38 +6,53 @@ from datetime import date
 import os
 
 def main():
-    url = getUrl()
-    downloadPic(url)
+    #'http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US'
+    for i in range(20):
+        address0 = 'http://www.bing.com/HPImageArchive.aspx?format=js&idx='
+        address1 = str(i)
+        address2 = '&n=1&mkt=en-US'
+        address = address0 + address1 + address2
+        response = getJsonResponse(address)
+        if response.strip() == 'null':
+            DstDir = os.getcwd() + '\\'
+            print('【请从',DstDir,'查看下载结果】')
+            break
+        url = getUrl(response)
+        #print(url)
+        print('正在下载前{}天的壁纸'.format(i))
+        downloadPic(url,address1)
 
-def getUrl():
+def getJsonResponse(address):
     #获取json文件
-    with urllib.request.urlopen('http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US') as response:
+    with urllib.request.urlopen(address) as response:
         result = response.read()
         s = result.decode()
         s = codecs.encode(s,encoding='utf-8')
         s = s.decode()
-        dict = json.loads(s)
-        keys = dict.keys()
-        list = dict['images']
-        #获取url
-        url = list[0]['url']
-        print(url)
-        return url
+        return s
 
-def downloadPic(url):
+def getUrl(response):
+    dict = json.loads(response)
+    keys = dict.keys()
+    list = dict['images']
+    #获取url
+    url = list[0]['url']
+    #print(url)
+    return url
+
+def downloadPic(url,address1):
     with urllib.request.urlopen(url) as dataValue:
         jpg = dataValue.read()
         DstDir = os.getcwd() + '\\'
         FileName1 = 'BingWallpaper'
         FileName2 = date.today().isoformat()
         FileNameEnd = '.jpg'
-        FileName=FileName1+FileName2+FileNameEnd
+        FileName=FileName1+FileName2+address1+FileNameEnd
 
         #下载图片并保存在当前路径
         File = open(DstDir + FileName,'wb')
         File.write(jpg)
         File.close()
-        print('【请从',DstDir,'查看下载结果】')
 
 if __name__ == '__main__':
     main()
