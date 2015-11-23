@@ -20,7 +20,7 @@ def main():
         url = getUrl(response)
         #print(url)
         print('正在下载前{}天的壁纸'.format(i))
-        downloadPic(url,address1)
+        downloadPic(url,i)
 
 def getJsonResponse(address):
     #获取json文件
@@ -40,14 +40,16 @@ def getUrl(response):
     #print(url)
     return url
 
-def downloadPic(url,address1):
+def downloadPic(url,i):
     with urllib.request.urlopen(url) as dataValue:
         jpg = dataValue.read()
         DstDir = os.getcwd() + '\\'
         FileName1 = 'BingWallpaper'
-        FileName2 = date.today().isoformat()
+        today = date.today()
+        fileDate = date.fromordinal(today.toordinal() - i)
+        FileName2 = fileDate.isoformat()
         FileNameEnd = '.jpg'
-        FileName=FileName1+FileName2+address1+FileNameEnd
+        FileName=FileName1+FileName2+FileNameEnd
 
         #下载图片并保存在当前路径
         File = open(DstDir + FileName,'wb')
