@@ -7,7 +7,7 @@ import os
 
 def main():
     #'http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US'
-    for i in range(20):
+    for i in range(100):
         address0 = 'http://www.bing.com/HPImageArchive.aspx?format=js&idx='
         address1 = str(i)
         address2 = '&n=1&mkt=en-US'
