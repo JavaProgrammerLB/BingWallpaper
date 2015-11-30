@@ -1,2 +1,4 @@
 # BingWallpaper
-Use python to get the picture from bing everydao wallpaper
+#### 这是个什么东西
+Bing：http://cn.bing.com/  
+Wallpaper：壁纸
