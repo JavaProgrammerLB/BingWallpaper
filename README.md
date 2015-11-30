@@ -1,7 +1,7 @@
 # BingWallpaper
 #### :octocat:介绍
 Bing：http://cn.bing.com/  
-Wallpaper：壁纸
+Wallpaper：壁纸  
 BingWallpaper是一个使用python3从Bing服务器下载每日壁纸的一个爬虫项目  
 #### :snowflake:原理
 根据如下的动态链接，进行下载
