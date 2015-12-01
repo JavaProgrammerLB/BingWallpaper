@@ -7,7 +7,7 @@ import os
 
 def main():
     #'http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US'
-    for i in range(100):
+    for i in range(20):
         address0 = 'http://www.bing.com/HPImageArchive.aspx?format=js&idx='
         address1 = str(i)
         address2 = '&n=1&mkt=en-US'
@@ -19,7 +19,7 @@ def main():
             break
         url = getUrl(response)
         #print(url)
-        print('正在下载前{}天的壁纸'.format(i))
+        #print('正在下载前{}天的壁纸'.format(i))
         downloadPic(url,i)
 
 def getJsonResponse(address):
@@ -54,6 +54,7 @@ def downloadPic(url,i):
         #下载图片并保存在当前路径
         File = open(DstDir + FileName,'wb')
         File.write(jpg)
+        print('正在下载{FileName2}的壁纸'.format(FileName2 = FileName2))
         File.close()
 
 if __name__ == '__main__':
