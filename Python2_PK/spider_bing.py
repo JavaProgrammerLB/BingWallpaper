@@ -51,6 +51,7 @@ class BingSpider:
 	def _run(self):
 		url = self.retrieve_url()
 		if url:
+			url = url if url.find('http') >= 0 else 'http://www.bing.com/'+url
 			logging.debug(u'图片地址为'+url)
 			self.download_img(url)
 		else:
