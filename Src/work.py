@@ -14,12 +14,13 @@ def main():
         address = address0 + address1 + address2
         response = getJsonResponse(address)
         if response.strip() == 'null':
-            DstDir = os.getcwd() + '\\'
+            DstDir = os.getcwd() + os.path.sep
             print('【请从',DstDir,'查看下载结果】')
             break
         url = getUrl(response)
         #print(url)
         #print('正在下载前{}天的壁纸'.format(i))
+        url = "http://www.bing.com" + url
         downloadPic(url,i)
 
 def getJsonResponse(address):
@@ -43,7 +44,7 @@ def getUrl(response):
 def downloadPic(url,i):
     with urllib.request.urlopen(url) as dataValue:
         jpg = dataValue.read()
-        DstDir = os.getcwd() + '\\'
+        DstDir = os.getcwd() + os.path.sep
         FileName1 = 'BingWallpaper'
         today = date.today()
         fileDate = date.fromordinal(today.toordinal() - i)
