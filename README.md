@@ -17,4 +17,4 @@ https://github.com/JavaProgrammerLB/BingWallpaper/tree/master/Release
 #### :sun_with_face:合作
 欢迎合作
 #### :dog:注意
-本项目仅做技术交流之用，从Bing下载的图片资源，仅能用做壁纸
+本项目仅做技术交流之用，请遵守Bing版权约定
